@@ -120,6 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_URL = '/static/'
 
+# URL to to serve media files uploaded by users
+MEDIA_URL= '/media/'
+# local path where media files reside
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
 from django.urls import reverse_lazy
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
@@ -133,3 +138,8 @@ EMAIL_HOST_USER = 'apradhan.testing@gmail.com'
 EMAIL_HOST_PASSWORD = 'Testing#93'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+)
