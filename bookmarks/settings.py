@@ -25,7 +25,7 @@ SECRET_KEY = '%j1hn^y*b)+rt1$i$18ear9tvkvbfh$k5z@fxsqk38w&kb9)3e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com',]
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # python-social-auth
+    'social_django',
 
 ]
 
@@ -64,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'social_django.context_processors.backends',
+                #'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -142,4 +146,10 @@ EMAIL_USE_TLS = True
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+
 )
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '100709771926-31lkfaf7mska0hk2pc4r72top6236g89.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'gJp_Ry_guP87p8hWxbWMCS4B'
